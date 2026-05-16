@@ -36,7 +36,7 @@ export const projects: Project[] = [
   {
     title: 'Multiplayer Support - Google XR Blocks',
     blurb:
-      'Designed and implemented multiplayer networking for XR Blocks, enabling shared mixed-reality experiences across devices. This works across networks, and custom servers as well as locally between devices, Androix XR, mobile and PC',
+      'Designed and implemented multiplayer networking for XR Blocks, enabling shared mixed-reality experiences across devices, this includes proximity voice, a shared chat, shared objects that can move, RPC actions, presence and 3 transport protocols. This works across networks, and custom servers as well as locally between devices, Meta Quest, Android XR, mobile and PC',
     gif: '/gifs/xrblocks-multiplayer.mp4',
     link: 'https://github.com/google/xrblocks',
     tags: ['XR', 'Networking', 'TypeScript'],
