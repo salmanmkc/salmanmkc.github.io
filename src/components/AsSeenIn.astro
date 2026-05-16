@@ -1,0 +1,58 @@
+---
+const mentions = [
+  { name: 'University of Oxford', href: 'https://www.instagram.com/p/CzoEm5XIM7X/?img_index=5' },
+  { name: 'Windows', href: 'https://www.youtube.com/watch?v=-cQzOhObAkM' },
+  { name: 'BenQ', href: 'https://www.benq.com/content/b2c/en-us/knowledge-center/knowledge/meet-the-expert-product-manager-salman-chishti.html' },
+  { name: 'Times Square', href: 'https://media.licdn.com/dms/image/v2/D4E22AQHj9Jf-7wDC1w/feedshare-shrink_1280/B4EZh0fi_WGoAo-/0/1754301085646?e=1779321600&v=beta&t=A0mhvpQww9WnD0v75o5vz9PU6Fjv7Ml4fzEzL7U3LaQ' },
+  { name: 'ACM CHI', href: 'https://dl.acm.org/doi/full/10.1145/3706598.3713387' },
+  { name: 'Microsoft Recruiter Book', href: 'https://media.licdn.com/dms/image/v2/C4E1FAQGH8i2ImPuo6w/feedshare-document-images_800/feedshare-document-images_800/1/1612256442369?e=1778716800&v=beta&t=A3Q6LKM60Xis-3eBL8j-5GXEVKIJWGR1SZOwenWm7zY' },
+];
+---
+<section class="as-seen-in" aria-label="As seen in">
+  <h2>As seen in</h2>
+  <ul>
+    {mentions.map((m, i) => (
+      <li>
+        <a href={m.href} target="_blank" rel="noopener noreferrer">{m.name}</a>
+        {i < mentions.length - 1 && <span class="sep" aria-hidden="true">·</span>}
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .as-seen-in {
+    margin: 8px 0 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  h2 {
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    align-items: center;
+  }
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+  }
+  a {
+    color: var(--fg);
+    border-bottom: 1px solid transparent;
+  }
+  a:hover { border-bottom-color: var(--fg); }
+  .sep { color: var(--muted); }
+</style>

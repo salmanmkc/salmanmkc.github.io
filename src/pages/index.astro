@@ -1,15 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import AsSeenIn from '../components/AsSeenIn.astro';
 import { projects } from '../data/projects';
+import { speaking, awards } from '../data/about';
 ---
 <Base title="Salman Chishti — Projects">
   <main>
     <header class="hero">
       <h1>SalmanMKC</h1>
       <p class="lede">
+        Software Engineer at <strong>GitHub</strong>. Previously <strong>Microsoft</strong>.
         I build XR experiences, research interactive systems, and ship developer tools.
-        A few recent projects:
       </p>
       <nav class="links">
         <a href="https://github.com/salmanmkc" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -17,8 +19,32 @@ import { projects } from '../data/projects';
       </nav>
     </header>
 
+    <AsSeenIn />
+
     <section class="grid">
       {projects.map((p) => <ProjectCard project={p} />)}
+    </section>
+
+    <section class="block">
+      <h2>Speaking &amp; Events</h2>
+      <p class="sub">A few flagship events I've spoken at or hosted:</p>
+      <table>
+        <tbody>
+          {speaking.map((s) => (
+            <tr>
+              <td>{s.event}</td>
+              <td class="role">{s.role}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>Awards</h2>
+      <ul class="awards">
+        {awards.map((a) => <li>{a}</li>)}
+      </ul>
     </section>
 
     <footer>
@@ -33,7 +59,7 @@ import { projects } from '../data/projects';
     margin: 0 auto;
     padding: 80px 24px 60px;
   }
-  .hero { margin-bottom: 48px; }
+  .hero { margin-bottom: 32px; }
   h1 {
     font-size: clamp(34px, 5vw, 52px);
     margin: 0 0 12px;
@@ -46,11 +72,55 @@ import { projects } from '../data/projects';
     max-width: 640px;
     margin: 0 0 18px;
   }
+  .lede strong { font-weight: 600; }
   .links { display: flex; gap: 18px; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 22px;
+  }
+  .block {
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .block h2 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .block .sub {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  td {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  td.role { color: var(--muted); text-align: right; }
+  .awards {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    font-size: 14px;
+    color: #333;
+  }
+  .awards li {
+    background: #f4f4f4;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 12px;
   }
   footer {
     margin-top: 80px;
@@ -61,5 +131,7 @@ import { projects } from '../data/projects';
   }
   @media (max-width: 600px) {
     main { padding: 56px 18px 40px; }
+    td.role { text-align: left; padding-top: 0; padding-bottom: 14px; }
+    tr td:first-child { padding-bottom: 2px; border-bottom: none; }
   }
 </style>

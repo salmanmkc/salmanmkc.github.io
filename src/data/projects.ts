@@ -1,7 +1,7 @@
 export type Project = {
   title: string;
   blurb: string;
-  gif: string;
+  gif?: string;
   link?: string;
   tags?: string[];
   year?: string;
@@ -68,6 +68,56 @@ export const projects: Project[] = [
     link: 'https://github.com/google/xrblocks',
     tags: ['XR', 'Gemini', 'MediaPipe'],
     year: '2026',
+  },
+  {
+    title: 'Microsoft Patent — Emphasis Image Generation',
+    blurb:
+      'Inventor on a Microsoft patent application: "Generation of Emphasis Image with Emphasis Boundary".',
+    gif: '/gifs/ms-patent.png',
+    link: 'https://patents.google.com/?inventor=salman+chishti&oq=salman+chishti',
+    tags: ['Patent', 'Microsoft'],
+    year: '2021',
+  },
+  {
+    title: 'Youth WellTech (arXiv, with Microsoft Research)',
+    blurb:
+      'A global remote co-design sprint for youth mental health technology, with Microsoft Research. I was a mentor and the second-highest contributor on the paper.',
+    gif: '/gifs/youth-welltech.png',
+    link: 'https://arxiv.org/abs/2401.05824',
+    tags: ['Research', 'Microsoft Research', 'Mental Health'],
+    year: '2022',
+  },
+  {
+    title: 'Biospatial OpenWorm — NASA Hackathon Award Winner',
+    blurb:
+      'AR simulation of the C. elegans connectome built for the NASA International Space Apps Challenge.',
+    gif: '/gifs/biospatial.mp4',
+    tags: ['AR', 'NASA', 'Award'],
+    },
+  {
+    title: 'UCL Agentverse Hackathon #1 — Multi-Agent System',
+    blurb:
+      'Winning multi-agent system built with CAIPE / LangGraph at the UCL Agentverse Hackathon.',
+    gif: '/gifs/agentverse.png',
+    link: 'https://github.com/salmanmkc/agentverse',
+    tags: ['Multi-Agent', 'LangGraph', 'Award'],
+    year: '2024',
+  },
+  {
+    title: 'Mixed Reality EEG + PPG Panic Attack Intervention — MIT Reality Hack',
+    blurb:
+      'Brain–computer interface combining EEG (brain), PPG (heart) and pose detection in mixed reality to support panic attack intervention. Built at MIT Reality Hack.',
+    gif: '/gifs/mit-reality-hack-eeg.png',
+    tags: ['MR', 'BCI', 'Health'],
+  },
+  {
+    title: 'Mixed Reality Smart Office — HoloLens',
+    blurb:
+      'HoloLens experience visualising IoT data in 3D with dynamic image tracking on physical devices around the office.',
+    gif: '/gifs/mr-smart-office.jpg',
+    link: 'https://www.youtube.com/watch?v=HiRQvAdTFec',
+    tags: ['HoloLens', 'IoT', 'MR'],
+    year: '2019',
   }
 
 ];

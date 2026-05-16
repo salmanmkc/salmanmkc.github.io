@@ -4,14 +4,18 @@ interface Props { project: Project }
 const { project } = Astro.props;
 const { title, blurb, gif, link, tags, year } = project;
 const Wrapper = link ? 'a' : 'div';
-const isVideo = /\.(mp4|webm|mov)$/i.test(gif);
+const isVideo = gif && /\.(mp4|webm|mov)$/i.test(gif);
 ---
 <Wrapper class="card" href={link} target={link ? '_blank' : undefined} rel={link ? 'noopener noreferrer' : undefined}>
   <div class="media">
-    {isVideo ? (
+    {gif && isVideo && (
       <video src={gif} autoplay muted loop playsinline preload="metadata" aria-label={`${title} preview`}></video>
-    ) : (
+    )}
+    {gif && !isVideo && (
       <img src={gif} alt={`${title} preview`} loading="lazy" />
+    )}
+    {!gif && (
+      <div class="placeholder" aria-hidden="true"></div>
     )}
   </div>
   <div class="body">
@@ -51,6 +55,12 @@ const isVideo = /\.(mp4|webm|mov)$/i.test(gif);
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+  .media .placeholder {
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(circle at 30% 20%, #f6f6f6 0%, #ececec 40%, #dfdfdf 100%);
   }
   .body { padding: 16px 18px 20px; }
   .meta {
