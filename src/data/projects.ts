@@ -11,7 +11,7 @@ export const projects: Project[] = [
   {
     title: 'Audio-Driven Avatar Lipsync',
     blurb:
-      'End-to-end audio-driven facial animation that runs locally in the browser. Mic → MFCCs → small MLP → 52 ARKit blendshapes → stylised avatar. The browser trains the model itself with TF.js on data captured live from your face via MediaPipe FaceLandmarker (free labels). The same architecture is mirrored in a JAX/Flax trainer that exports to LiteRT for Android XR / Quest.',
+      'End-to-end audio-driven facial animation that runs locally in the browser. Mic → MFCCs → small MLP → 52 ARKit blendshapes → stylised avatar. The browser trains the model itself with TF.js on data captured live from your face via MediaPipe FaceLandmarker. The same architecture is mirrored in a JAX/Flax trainer that exports to LiteRT for Android XR or Quest.',
     gif: '/gifs/audio-avatar-lipsync.mp4',
     link: 'https://salmanmkc.github.io/audio-avatar-lipsync/',
     tags: ['ML', 'Audio', 'XR', 'On-Device'],
