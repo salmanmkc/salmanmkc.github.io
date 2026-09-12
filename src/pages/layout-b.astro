@@ -1,17 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import FeaturedProject from '../components/FeaturedProject.astro';
 import AsSeenIn from '../components/AsSeenIn.astro';
 import LayoutToggle from '../components/LayoutToggle.astro';
 import { projects } from '../data/projects';
+import type { Project } from '../data/projects';
 import { featured } from '../data/featured';
 import { speaking, awards } from '../data/about';
+
+// Version B: no featured block. The two new projects lead the existing grid as
+// ordinary cards, so the page keeps its current single-grid shape.
+const featuredAsCards: Project[] = featured.map((f) => ({
+  title: f.title,
+  blurb: f.cardBlurb,
+  gif: f.video,
+  poster: f.poster,
+  caption: f.caption,
+  link: f.links[0].href,
+  tags: f.tags,
+  year: f.year,
+}));
+
+const allProjects = [...featuredAsCards, ...projects];
 ---
 <Base
   title="Salman Chishti — Projects"
   description="Projects and research by Salman Muin Kayser Chishti — XR experiences, agentic developer tools and interactive systems research, including Roomcraft and AgentHands for Google XR Blocks."
   canonical="/"
+  noindex={true}
 >
   <main>
     <header class="hero">
@@ -30,24 +46,12 @@ import { speaking, awards } from '../data/about';
       </nav>
     </header>
 
-    <LayoutToggle current="a" />
+    <LayoutToggle current="b" />
 
     <AsSeenIn />
 
-    <section class="featured-block" aria-labelledby="featured-heading">
-      <h2 id="featured-heading">Featured</h2>
-      <p class="sub">
-        Recent work on <a href="https://github.com/google/xrblocks" target="_blank" rel="noopener noreferrer">Google XR Blocks</a>.
-        Clips are short, silent excerpts from my own demo recordings — each links to the full video and the source project.
-      </p>
-      <div class="featured-list">
-        {featured.map((f) => <FeaturedProject item={f} />)}
-      </div>
-    </section>
-
-    <h2 class="grid-heading">Other projects &amp; research</h2>
     <section class="grid">
-      {projects.map((p) => <ProjectCard project={p} />)}
+      {allProjects.map((p) => <ProjectCard project={p} />)}
     </section>
 
     <section class="block">
@@ -103,32 +107,6 @@ import { speaking, awards } from '../data/about';
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 22px;
-  }
-  .featured-block { margin: 0 0 56px; }
-  .featured-block h2,
-  .grid-heading {
-    margin: 0 0 6px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .featured-block .sub {
-    margin: 0 0 20px;
-    color: var(--muted);
-    font-size: 14px;
-    max-width: 640px;
-  }
-  .featured-list {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  }
-  .grid-heading {
-    padding-top: 28px;
-    border-top: 1px solid var(--line);
-    margin-bottom: 20px;
   }
   .block {
     margin-top: 64px;

@@ -2,12 +2,24 @@ export type Project = {
   title: string;
   blurb: string;
   gif?: string;
+  poster?: string;
+  caption?: string;
+  placeholder?: string;
   link?: string;
   tags?: string[];
   year?: string;
 };
 
 export const projects: Project[] = [
+  {
+    title: 'MCP Server for Coding Agents — Google XR Blocks',
+    blurb:
+      'A stdio MCP server that exposes list_skills, get_skill and search_api so coding agents can discover XR Blocks workflows and check real exported APIs instead of inventing them. A follow-up extended the API surface to addons, so answers stay accurate as the SDK grows.',
+    placeholder: 'list_skills · get_skill · search_api',
+    link: 'https://github.com/google/xrblocks',
+    tags: ['MCP', 'Dev Tools', 'Agents'],
+    year: '2026',
+  },
   {
     title: 'Audio-Driven Avatar Lipsync',
     blurb:
@@ -51,15 +63,6 @@ export const projects: Project[] = [
     link: 'https://patents.google.com/?inventor=salman+chishti&oq=salman+chishti',
     tags: ['Patent', 'Microsoft'],
     year: '2022',
-  },
-  {
-    title: 'Multiplayer Support - Google XR Blocks',
-    blurb:
-      'Designed and implemented multiplayer networking for XR Blocks, enabling shared mixed-reality experiences across devices, this includes proximity voice, a shared chat, shared objects that can move, RPC actions, presence and 3 transport protocols. This works across networks, and custom servers as well as locally between devices, Meta Quest, Android XR, mobile and PC',
-    gif: '/gifs/xrblocks-multiplayer.mp4',
-    link: 'https://github.com/google/xrblocks',
-    tags: ['XR', 'Networking', 'TypeScript'],
-    year: '2026',
   },
   {
     title: 'Portals Demo — Google XR Blocks',

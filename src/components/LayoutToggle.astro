@@ -1,0 +1,62 @@
+---
+// Visitor-facing layout chooser. Plain links, so it works with no JavaScript
+// and never redirects away from the URL someone actually asked for.
+const { current } = Astro.props as { current: 'a' | 'b' };
+---
+<nav class="layout-toggle" aria-label="Page layout">
+  <span class="label" id="layout-toggle-label">View</span>
+  <span class="opts" role="group" aria-labelledby="layout-toggle-label">
+    <a href="/" class:list={['opt', { on: current === 'a' }]} aria-current={current === 'a' ? 'page' : undefined}>
+      Showcase
+    </a>
+    <a href="/layout-b/" class:list={['opt', { on: current === 'b' }]} aria-current={current === 'b' ? 'page' : undefined}>
+      Compact
+    </a>
+  </span>
+</nav>
+
+<style>
+  .layout-toggle {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .label {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .opts {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    padding: 2px;
+  }
+  .opt {
+    border: 0;
+    border-radius: 999px;
+    padding: 4px 12px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .opt:hover { color: var(--fg); }
+  .opt.on {
+    background: var(--fg);
+    color: #fff;
+  }
+  .opt:focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 2px;
+  }
+  @media (max-width: 600px) {
+    .layout-toggle { padding: 0 16px; }
+  }
+</style>

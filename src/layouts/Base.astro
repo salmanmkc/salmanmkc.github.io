@@ -2,8 +2,16 @@
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
+  noindex?: boolean;
 }
-const { title = 'Salman MKC', description = 'Projects and research by Salman MKC.' } = Astro.props;
+const {
+  title = 'Salman MKC',
+  description = 'Projects and research by Salman MKC.',
+  canonical,
+  noindex = false,
+} = Astro.props;
+const canonicalUrl = canonical ? new URL(canonical, Astro.site) : undefined;
 ---
 <!doctype html>
 <html lang="en">
@@ -11,6 +19,8 @@ const { title = 'Salman MKC', description = 'Projects and research by Salman MKC
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl.href} />}
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
@@ -42,5 +52,96 @@ const { title = 'Salman MKC', description = 'Projects and research by Salman MKC
       a:hover { border-bottom-color: var(--fg); }
       img { max-width: 100%; display: block; }
     </style>
+
+    <script>
+      // Managed clips opt in with data-autoplay-in-view: poster-first, fetched
+      // and played only in view, and never while reduced motion is preferred.
+      // Older project cards keep their own plain autoplay and are untouched.
+      const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const clips = Array.from(
+        document.querySelectorAll<HTMLVideoElement>('video[data-autoplay-in-view]')
+      );
+
+      type ClipState = { userPaused: boolean; visible: boolean; programmatic: boolean };
+      const state = new WeakMap<HTMLVideoElement, ClipState>();
+      for (const clip of clips) {
+        state.set(clip, { userPaused: false, visible: false, programmatic: false });
+      }
+
+      const describe = (clip: HTMLVideoElement) => clip.currentSrc || clip.src;
+
+      function pauseClip(clip: HTMLVideoElement) {
+        const s = state.get(clip);
+        if (!s || clip.paused) return;
+        s.programmatic = true;
+        clip.pause();
+      }
+
+      function tryPlayClip(clip: HTMLVideoElement) {
+        const s = state.get(clip);
+        if (!s || motionQuery.matches || s.userPaused || !s.visible || !clip.paused) return;
+        if (clip.preload !== 'auto') clip.preload = 'auto';
+
+        const started = clip.play();
+        if (!started) return;
+        started.catch((error: unknown) => {
+          const name = error instanceof Error ? error.name : '';
+          // NotAllowedError: the browser declined autoplay. AbortError: playback
+          // was superseded by a pause or a new load. Both are expected — the
+          // poster stays up and the native controls still work.
+          if (name === 'NotAllowedError' || name === 'AbortError') return;
+          console.warn(`Clip could not start (${describe(clip)}):`, error);
+        });
+      }
+
+      for (const clip of clips) {
+        clip.addEventListener('pause', () => {
+          const s = state.get(clip);
+          if (!s) return;
+          // A pause we did not initiate came from the native controls, so treat
+          // it as deliberate and stop restarting the clip on later scrolls.
+          if (s.programmatic) s.programmatic = false;
+          else s.userPaused = true;
+        });
+
+        clip.addEventListener('play', () => {
+          const s = state.get(clip);
+          if (s) s.userPaused = false;
+        });
+
+        clip.addEventListener('error', () => {
+          console.warn(`Clip failed to load (${describe(clip)}):`, clip.error);
+        });
+      }
+
+      if (clips.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              const clip = entry.target as HTMLVideoElement;
+              const s = state.get(clip);
+              if (!s) continue;
+              s.visible = entry.isIntersecting;
+              if (s.visible) tryPlayClip(clip);
+              else pauseClip(clip);
+            }
+          },
+          { threshold: 0.35 }
+        );
+        clips.forEach((clip) => observer.observe(clip));
+      }
+
+      // React to the preference flipping while the page is open, both ways.
+      const onMotionPreferenceChange = () => {
+        if (motionQuery.matches) clips.forEach(pauseClip);
+        else clips.forEach(tryPlayClip);
+      };
+
+      if (typeof motionQuery.addEventListener === 'function') {
+        motionQuery.addEventListener('change', onMotionPreferenceChange);
+      } else if (typeof motionQuery.addListener === 'function') {
+        motionQuery.addListener(onMotionPreferenceChange);
+      }
+    </script>
   </body>
 </html>

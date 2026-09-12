@@ -2,23 +2,38 @@
 import type { Project } from '../data/projects';
 interface Props { project: Project }
 const { project } = Astro.props;
-const { title, blurb, gif, link, tags, year } = project;
+const { title, blurb, gif, poster, caption, placeholder, link, tags, year } = project;
 const Wrapper = link ? 'a' : 'div';
 const isVideo = gif && /\.(mp4|webm|mov)$/i.test(gif);
 ---
 <Wrapper class="card" href={link} target={link ? '_blank' : undefined} rel={link ? 'noopener noreferrer' : undefined}>
   <div class="media">
-    {gif && isVideo && (
+    {gif && isVideo && poster && (
+      <video
+        src={gif}
+        poster={poster}
+        muted
+        loop
+        playsinline
+        preload="none"
+        data-autoplay-in-view
+        aria-label={`${title} preview, no audio`}
+      ></video>
+    )}
+    {gif && isVideo && !poster && (
       <video src={gif} autoplay muted loop playsinline preload="metadata" aria-label={`${title} preview`}></video>
     )}
     {gif && !isVideo && (
       <img src={gif} alt={`${title} preview`} loading="lazy" />
     )}
     {!gif && (
-      <div class="placeholder" aria-hidden="true"></div>
+      <div class="placeholder" aria-hidden="true">
+        {placeholder && <span class="placeholder-text">{placeholder}</span>}
+      </div>
     )}
   </div>
   <div class="body">
+    {caption && <p class="caption">{caption}</p>}
     <div class="meta">
       {year && <span class="year">{year}</span>}
       {tags && tags.map((t) => <span class="tag">{t}</span>)}
@@ -59,10 +74,29 @@ const isVideo = gif && /\.(mp4|webm|mov)$/i.test(gif);
   .media .placeholder {
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
+    text-align: center;
     background:
       radial-gradient(circle at 30% 20%, #f6f6f6 0%, #ececec 40%, #dfdfdf 100%);
   }
+  .placeholder-text {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    color: #7a7a7a;
+  }
   .body { padding: 16px 18px 20px; }
+  .caption {
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--muted);
+    border-left: 2px solid var(--line);
+    padding-left: 9px;
+  }
   .meta {
     display: flex;
     flex-wrap: wrap;
