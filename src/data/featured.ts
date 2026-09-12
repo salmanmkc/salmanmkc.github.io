@@ -25,7 +25,7 @@ export const featured: Featured[] = [
     video: '/gifs/roomcraft.mp4',
     poster: '/gifs/roomcraft-poster.jpg',
     caption:
-      'Silent excerpts: a prompted city skyline at night, its sky then shifted to sunset on request, frogs added to a pond, and a person set walking through a moonlit Japanese garden. A described edit then fills empty ground with an office suite, walls enclose and recolour the room, and a seated figure is placed at the desk. Meta Quest headset footage first, desktop simulator from the sunlit Japanese garden onward.',
+      'Silent clip. Meta Quest headset footage first, then the desktop simulator.',
     note: 'Runs anywhere XR Blocks does, including the desktop simulator — not a headset-only app.',
     links: [
       { label: 'Watch the full demo', href: 'https://youtu.be/0CXubRowyPo' },
@@ -44,7 +44,7 @@ export const featured: Featured[] = [
     video: '/gifs/agenthands.mp4',
     poster: '/gifs/agenthands-poster.jpg',
     caption:
-      'AgentHands demo, silent excerpts: pointing at a wall socket, then gesturing and pointing around a living-room scene.',
+      'Silent clip.',
     note:
       'Based on AgentHands (Liu et al., CHI 2026), implemented as reusable three.js / WebXR components for XR Blocks.',
     links: [
@@ -68,7 +68,7 @@ export const featured: Featured[] = [
     video: '/gifs/anchors.mp4',
     poster: '/gifs/anchors-poster.jpg',
     caption:
-      'Desktop simulator, silent excerpt: markers dropped one by one, then restored after a page reload.',
+      'Silent clip, recorded in the desktop simulator.',
     links: [
       { label: 'XR Blocks on GitHub', href: 'https://github.com/google/xrblocks' },
     ],
@@ -85,7 +85,7 @@ export const featured: Featured[] = [
     video: '/gifs/xrblocks-multiplayer.mp4',
     poster: '/gifs/multiplayer-poster.jpg',
     caption:
-      'Silent excerpt: two devices joined to one session, with the same objects and panels kept in sync between both views.',
+      'Silent clip: two devices in one session.',
     links: [
       { label: 'XR Blocks on GitHub', href: 'https://github.com/google/xrblocks' },
     ],
