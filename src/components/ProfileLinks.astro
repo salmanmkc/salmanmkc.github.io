@@ -1,0 +1,24 @@
+---
+// Single source of truth for the profile links. Used by the hero on both
+// layouts and by the 404 page, so adding a link updates every page at once.
+interface Props {
+  label?: string;
+  home?: boolean;
+}
+const { label = 'Profile links', home = false } = Astro.props;
+---
+<nav class="links" aria-label={label}>
+  {home && <a href="/">Back to projects</a>}
+  <a href="https://github.com/salmanmkc" target="_blank" rel="noopener noreferrer">GitHub</a>
+  <a href="https://linkedin.com/in/salmanmkc" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  <a href="https://scholar.google.com/citations?user=eS60RNQAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+  <a href="mailto:salmanmkc-research@curiouslyconscientious.com">Email</a>
+</nav>
+
+<style>
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+</style>

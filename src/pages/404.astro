@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import ProfileLinks from '../components/ProfileLinks.astro';
 ---
 <Base
   title="Page not found — Salman Chishti"
@@ -13,11 +14,7 @@ import Base from '../layouts/Base.astro';
       The link may be out of date, or the page may have moved. Everything is
       reachable from the front page.
     </p>
-    <nav class="links" aria-label="Recovery links">
-      <a href="/">Back to projects</a>
-      <a href="https://github.com/salmanmkc" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="mailto:salmanmkc-research@curiouslyconscientious.com">Email</a>
-    </nav>
+    <ProfileLinks label="Recovery links" home />
   </main>
 </Base>
 
@@ -46,11 +43,6 @@ import Base from '../layouts/Base.astro';
     color: var(--body);
     max-width: 520px;
     margin: 0 0 24px;
-  }
-  .links {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
   }
   @media (max-width: 640px) {
     main { padding: 72px 18px 48px; }

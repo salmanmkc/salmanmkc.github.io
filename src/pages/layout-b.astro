@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import ProfileLinks from '../components/ProfileLinks.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import AsSeenIn from '../components/AsSeenIn.astro';
 import LayoutToggle from '../components/LayoutToggle.astro';
@@ -39,12 +40,7 @@ const allProjects = [...featuredAsCards, ...projects];
         <strong>Oxford</strong> and <strong>Microsoft</strong>.
         I build XR experiences, research interactive systems, and ship developer tools.
       </p>
-      <nav class="links">
-        <a href="https://github.com/salmanmkc" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://linkedin.com/in/salmanmkc" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://scholar.google.com/citations?user=eS60RNQAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-        <a href="mailto:salmanmkc-research@curiouslyconscientious.com">Email</a>
-      </nav>
+      <ProfileLinks />
     </header>
 
     <LayoutToggle current="b" />
@@ -103,7 +99,6 @@ const allProjects = [...featuredAsCards, ...projects];
     margin: 0 0 18px;
   }
   .lede strong { font-weight: 600; }
-  .links { display: flex; gap: 18px; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

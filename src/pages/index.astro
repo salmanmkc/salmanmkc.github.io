@@ -4,6 +4,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import FeaturedProject from '../components/FeaturedProject.astro';
 import AsSeenIn from '../components/AsSeenIn.astro';
 import LayoutToggle from '../components/LayoutToggle.astro';
+import ProfileLinks from '../components/ProfileLinks.astro';
 import { projects } from '../data/projects';
 import { featured } from '../data/featured';
 import { speaking, awards } from '../data/about';
@@ -23,12 +24,7 @@ import { speaking, awards } from '../data/about';
         <strong>Oxford</strong> and <strong>Microsoft</strong>.
         I build XR experiences, research interactive systems, and ship developer tools.
       </p>
-      <nav class="links">
-        <a href="https://github.com/salmanmkc" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://linkedin.com/in/salmanmkc" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://scholar.google.com/citations?user=eS60RNQAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-        <a href="mailto:salmanmkc-research@curiouslyconscientious.com">Email</a>
-      </nav>
+      <ProfileLinks />
     </header>
 
     <LayoutToggle current="a" />
@@ -99,7 +95,6 @@ import { speaking, awards } from '../data/about';
     margin: 0 0 18px;
   }
   .lede strong { font-weight: 600; }
-  .links { display: flex; gap: 18px; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
