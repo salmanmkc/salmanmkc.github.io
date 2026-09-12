@@ -57,12 +57,12 @@ const isVideo = gif && /\.(mp4|webm|mov)$/i.test(gif);
   }
   a.card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-    border-color: #d0d0d0;
+    box-shadow: 0 8px 24px var(--shadow);
+    border-color: var(--line-strong);
   }
   .media {
     aspect-ratio: 16 / 10;
-    background: #f0f0f0;
+    background: var(--media-bg);
     overflow: hidden;
   }
   .media img, .media video {
@@ -80,13 +80,13 @@ const isVideo = gif && /\.(mp4|webm|mov)$/i.test(gif);
     padding: 0 18px;
     text-align: center;
     background:
-      radial-gradient(circle at 30% 20%, #f6f6f6 0%, #ececec 40%, #dfdfdf 100%);
+      radial-gradient(circle at 30% 20%, var(--ph-1) 0%, var(--ph-2) 40%, var(--ph-3) 100%);
   }
   .placeholder-text {
     font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
     font-size: 13px;
     letter-spacing: 0.01em;
-    color: #7a7a7a;
+    color: var(--muted);
   }
   .body { padding: 16px 18px 20px; }
   .caption {
@@ -110,7 +110,7 @@ const isVideo = gif && /\.(mp4|webm|mov)$/i.test(gif);
     padding: 2px 8px;
     border-radius: 999px;
   }
-  .year { background: #f4f4f4; }
+  .year { background: var(--chip); }
   h3 { margin: 4px 0 6px; font-size: 17px; font-weight: 600; }
-  p { margin: 0; color: #333; font-size: 14px; }
+  p { margin: 0; color: var(--body); font-size: 14px; }
 </style>
