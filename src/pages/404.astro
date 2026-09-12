@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Page not found — Salman Chishti"
+  description="That page doesn't exist. Head back to the projects and research index."
+  noindex
+>
+  <main>
+    <p class="code">404</p>
+    <h1>This page doesn't exist</h1>
+    <p class="lede">
+      The link may be out of date, or the page may have moved. Everything is
+      reachable from the front page.
+    </p>
+    <nav class="links" aria-label="Recovery links">
+      <a href="/">Back to projects</a>
+      <a href="https://github.com/salmanmkc" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:salmanmkc-research@curiouslyconscientious.com">Email</a>
+    </nav>
+  </main>
+</Base>
+
+<style>
+  main {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 120px 24px 80px;
+  }
+  .code {
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px);
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  .lede {
+    font-size: 18px;
+    color: var(--body);
+    max-width: 520px;
+    margin: 0 0 24px;
+  }
+  .links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 640px) {
+    main { padding: 72px 18px 48px; }
+  }
+</style>
