@@ -29,6 +29,10 @@ export const featured: Featured[] = [
     note: 'Runs anywhere XR Blocks does, including the desktop simulator — not a headset-only app.',
     links: [
       { label: 'Watch the full demo', href: 'https://youtu.be/0CXubRowyPo' },
+      {
+        label: 'Try the collaborative sample',
+        href: 'https://xrblocks.github.io/docs/samples/Collaborative-Roomcraft/',
+      },
       { label: 'XR Blocks on GitHub', href: 'https://github.com/google/xrblocks' },
     ],
     tags: ['XR', 'three.js', 'Scene Authoring', 'Collaboration'],
