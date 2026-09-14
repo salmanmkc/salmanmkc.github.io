@@ -19,9 +19,9 @@ export const featured: Featured[] = [
     title: 'Roomcraft — author a whole virtual place by describing it',
     kicker: 'Google XR Blocks · addon',
     blurb:
-      'An opt-in XR Blocks addon that turns a prompt into editable 3D content, composing catalog assets with procedural primitive-part designs. Scenes are refined in place through text, Gemini voice or direct manipulation. Optional virtual worlds add ground, sky, lighting, ponds, paths and seeded plants; characters and creatures can be added and set moving, objects can take bounded swing or spin animation, and the whole scene supports selection, undo/redo and JSON export. It composes and edits a scene graph — not text-to-mesh generation, and not generated JavaScript.',
+      'An opt-in XR Blocks addon that turns a prompt into editable 3D content, composing catalog assets with procedural primitive-part designs. Scenes are refined in place through text, Gemini voice or direct manipulation. Optional virtual worlds add ground, sky, lighting, ponds, paths and seeded plants; characters and creatures can be added and set moving, objects can take bounded swing or spin animation, and the whole scene supports selection, undo/redo and JSON export. Scenes are no longer local-only: a four-letter room code opens the same editor for several people across headsets, phones and laptops, sharing authoring, dragging, selection, presence and peer voice kept separate from Gemini, with shared animation running from a common timeline so late arrivals catch up. It composes and edits a scene graph — not text-to-mesh generation, and not generated JavaScript.',
     cardBlurb:
-      'An opt-in XR Blocks addon that turns a prompt into editable 3D content, composing catalog assets with procedural primitive-part designs. Scenes are refined in place through text, Gemini voice or direct manipulation, with optional virtual worlds, characters and creatures set moving, bounded animation, undo/redo and JSON export.',
+      'An opt-in XR Blocks addon that turns a prompt into editable 3D content, composing catalog assets with procedural primitive-part designs. Scenes are refined in place through text, Gemini voice or direct manipulation, with optional virtual worlds, characters and creatures set moving, bounded animation, undo/redo and JSON export. A shared room code now opens the same scene for several people across devices.',
     video: '/gifs/roomcraft.mp4',
     poster: '/gifs/roomcraft-poster.jpg',
     caption:
@@ -31,7 +31,7 @@ export const featured: Featured[] = [
       { label: 'Watch the full demo', href: 'https://youtu.be/0CXubRowyPo' },
       { label: 'XR Blocks on GitHub', href: 'https://github.com/google/xrblocks' },
     ],
-    tags: ['XR', 'three.js', 'Scene Authoring'],
+    tags: ['XR', 'three.js', 'Scene Authoring', 'Collaboration'],
     year: '2026',
   },
   {
@@ -87,6 +87,7 @@ export const featured: Featured[] = [
     caption:
       'Silent clip: two devices in one session.',
     links: [
+      { label: 'Watch the full demo', href: 'https://youtu.be/n4Me8imRzxA' },
       { label: 'XR Blocks on GitHub', href: 'https://github.com/google/xrblocks' },
     ],
     tags: ['XR', 'Networking', 'TypeScript'],
