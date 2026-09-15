@@ -2,7 +2,7 @@
 import type { Featured } from '../data/featured';
 interface Props { item: Featured }
 const { item } = Astro.props;
-const { title, kicker, blurb, video, poster, caption, note, links, tags, year } = item;
+const { title, kicker, badge, blurb, video, poster, caption, note, links, tags, year } = item;
 ---
 <article class="featured">
   <figure class="media">
@@ -21,7 +21,10 @@ const { title, kicker, blurb, video, poster, caption, note, links, tags, year } 
     <figcaption>{caption}</figcaption>
   </figure>
   <div class="body">
-    <p class="kicker">{kicker}</p>
+    <p class="kicker">
+      {badge && <span class="badge">{badge}</span>}
+      <span>{kicker}</span>
+    </p>
     <h3>{title}</h3>
     <p class="blurb">{blurb}</p>
     {note && <p class="note">{note}</p>}
@@ -81,6 +84,17 @@ const { title, kicker, blurb, video, poster, caption, note, links, tags, year } 
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .badge {
+    background: var(--fg);
+    color: var(--bg);
+    border-radius: 999px;
+    padding: 3px 9px;
+    letter-spacing: 0.06em;
   }
   h3 {
     margin: 0 0 10px;
