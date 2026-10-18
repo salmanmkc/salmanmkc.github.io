@@ -17,6 +17,26 @@ export type Featured = {
 
 export const featured: Featured[] = [
   {
+    title: 'Session Replay — record real XR input, replay it on desktop',
+    kicker: 'Google XR Blocks · addon',
+    badge: 'Open PR',
+    blurb:
+      'An opt-in addon that records a real XR session — head and controller poses, selection state and all 25 hand joints per side — into plain JSON, then replays the same camera, controllers, hands and select events in the desktop simulator. It turns captured headset interaction into repeatable simulator input for demos and debugging, with no changes to XR Blocks core.',
+    cardBlurb:
+      'An opt-in addon that records real headset, controller, hand-joint and selection input into plain JSON, then replays the camera, controllers, hands and select events in the XR Blocks desktop simulator.',
+    video: '/gifs/session-replay.mp4',
+    poster: '/gifs/session-replay-poster.jpg',
+    caption:
+      'Silent side-by-side clip: headset recording at lower left, desktop simulator replay at upper right.',
+    note:
+      'Playback targets the desktop simulator and reproduces recorded input rather than the app clock.',
+    links: [
+      { label: 'XR Blocks on GitHub', href: 'https://github.com/google/xrblocks' },
+    ],
+    tags: ['XR', 'WebXR', 'Developer Tools'],
+    year: '2026',
+  },
+  {
     title: 'Roomcraft — author a whole virtual place together by describing it',
     kicker: 'Google XR Blocks · addon',
     badge: 'Solo or shared',
