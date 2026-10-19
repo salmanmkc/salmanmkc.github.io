@@ -37,6 +37,27 @@ export const featured: Featured[] = [
     year: '2026',
   },
   {
+    title: 'Phone Companion — use your phone as an XR controller and keyboard',
+    kicker: 'Google XR Blocks · sample',
+    badge: 'Open PR',
+    blurb:
+      'A phone companion flow for XR Blocks that pairs by four-character code or optional QR token. Once connected, the phone becomes a pointer/controller for moving the XR cursor, dragging and tapping, and provides native mobile keyboard input for headset text fields. It includes reconnect/recovery and secure session handling, and has been validated on Quest 3 with an Android phone.',
+    cardBlurb:
+      'Pairs a phone to XR Blocks by four-character code or optional QR token, then uses it as a pointer/controller for XR movement, drag/tap actions and native mobile keyboard input.',
+    video: '/gifs/phone-companion.mp4',
+    poster: '/gifs/phone-companion-poster.jpg',
+    caption:
+      'Silent clip. Meta Quest headset footage first, then the desktop simulator.',
+    note:
+      'Open work; depends on a related XR Blocks change, with a follow-up device retest still pending.',
+    links: [
+      { label: 'Watch the full demo', href: 'https://www.youtube.com/watch?v=V1doNu5ICv4' },
+      { label: 'XR Blocks on GitHub', href: 'https://github.com/google/xrblocks' },
+    ],
+    tags: ['XR', 'WebXR', 'Mobile'],
+    year: '2026',
+  },
+  {
     title: 'Roomcraft — author a whole virtual place together by describing it',
     kicker: 'Google XR Blocks · addon',
     badge: 'Solo or shared',
