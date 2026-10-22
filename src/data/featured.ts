@@ -49,7 +49,7 @@ export const featured: Featured[] = [
     caption:
       'Silent clip. Meta Quest headset footage first, then the desktop simulator.',
     note:
-      'Open work; depends on a related XR Blocks change, with a follow-up device retest still pending.',
+      'Open work. Validated on Quest 3 with an Android phone; a device retest of the latest security follow-ups is still pending.',
     links: [
       { label: 'Watch the full demo', href: 'https://www.youtube.com/watch?v=V1doNu5ICv4' },
       { label: 'XR Blocks on GitHub', href: 'https://github.com/google/xrblocks' },
